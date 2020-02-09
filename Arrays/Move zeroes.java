@@ -1,5 +1,4 @@
-// https://leetcode.com/problems/move-zeroes/submissions/
-
+// https://leetcode.com/problems/move-zeroes/
 class Solution {
     public void moveZeroes(int[] nums) {
         int k=0;

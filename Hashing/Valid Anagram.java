@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/valid-anagram/solution/
+// https://leetcode.com/problems/valid-anagram/
 
 
 // HashMap solution

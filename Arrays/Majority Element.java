@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/majority-element/submissions/
+// https://leetcode.com/problems/majority-element/
 
 class Solution {
     public int majorityElement(int[] nums) {
