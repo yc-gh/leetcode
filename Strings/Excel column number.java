@@ -10,7 +10,6 @@ class Solution {
             result += ((int)Math.pow(26, power++) * (s.charAt(n)-'A' + 1));
             n--;
         }
-        
         return result;
     }
 }
