@@ -1,6 +1,46 @@
 // https://leetcode.com/problems/permutations/
 
-// Backtracking efficient
+
+//Backtracking faster
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> output = new ArrayList<>();
+        getPermutations(nums, 0, nums.length-1, output);
+        return output;
+    }
+    
+    static void getPermutations(int[] nums, int l, int r, List<List<Integer>> output)
+    {
+        if(l==r)
+        {
+            List<Integer> tempList = new ArrayList<>();
+            for(int i : nums)
+            {
+                tempList.add(i);
+            }
+            output.add(tempList);
+        }
+        else
+        {
+            for(int i=l; i<=r; i++)
+            {
+                swap(nums, i, l);
+                getPermutations(nums, l+1, r, output);
+                swap(nums, i, l);
+            }
+        }
+    }
+    
+    static void swap(int[] nums, int i, int j)
+    {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
+
+
+// Backtracking slightly slower
 class Solution {
     public List<List<Integer>> permute(int[] nums) 
     {
@@ -30,39 +70,5 @@ class Solution {
                 tempList.remove(tempList.size()-1);
             }
         }
-    }
-}
-
-
-//Backtracking inefficient
-class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> output = new ArrayList<>();
-        getPermutations(nums, 0, nums.length-1, output);
-        return output;
-    }
-    
-    static void getPermutations(int[] nums, int l, int r, List<List<Integer>> output)
-    {
-        if(l==r)
-        {
-            output.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
-        }
-        else
-        {
-            for(int i=l; i<=r; i++)
-            {
-                swap(nums, i, l);
-                getPermutations(nums, l+1, r, output);
-                swap(nums, i, l);
-            }
-        }
-    }
-    
-    static void swap(int[] nums, int i, int j)
-    {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 }
