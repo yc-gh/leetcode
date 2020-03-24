@@ -28,5 +28,3 @@ class Solution {
         return count;
     } 
 }
-
-//Simple multiples solution
