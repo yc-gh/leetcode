@@ -7,11 +7,11 @@ class Solution {
         public void rotate(int[][] matrix) {
             if(matrix==null || matrix.length==0) return;
             int n = matrix.length;
-            reverseUpDown(matrix, n);
+            reverseRows(matrix, n);
             transpose(matrix, n);
         }
         
-        static void reverseUpDown(int[][] matrix, int n)
+        static void reverseRows(int[][] matrix, int n)
         {
             for(int i=0,k=n-1; i<k; i++,k--)
             {
