@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/increasing-triplet-subsequence/
+
 class Solution {
     public boolean increasingTriplet(int[] nums) {
         // start with two largest values, as soon as we find a number bigger than both, while both have been updated, return true.
