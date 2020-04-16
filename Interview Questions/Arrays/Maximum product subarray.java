@@ -18,7 +18,7 @@ class Solution {
             tempMax = Integer.max(nums[i], tempMax*nums[i]);
             tempMin = Integer.min(nums[i], tempMin*nums[i]);
             
-            if(tempMax>max) max=tempMax;
+            max = Integer.max(max, tempMax);
         }
         
         return max;
