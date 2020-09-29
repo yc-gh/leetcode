@@ -3,34 +3,37 @@
 // Bucket sort 
 
 class Solution {
-
-    public List<Integer> topKFrequent(int[] nums, int k) {
-
-        List<Integer>[] bucket = new List[nums.length + 1];
-
+    public int[] topKFrequent(int[] nums, int k) {
+        if(nums==null || nums.length==0) return new int[0];
+        
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i : nums) {
-            map.put(i, map.getOrDefault(i, 0) + 1);
-        }
-
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            int key = entry.getKey();
-            int freq = entry.getValue();
-            if (bucket[freq] == null) {
-                bucket[freq] = new ArrayList();
-            }
+        List<Integer>[] bucket = new ArrayList[nums.length+1];
+        
+        for(int i : nums) map.put(i, map.getOrDefault(i,0)+1);
+        
+        for(int key : map.keySet())
+        {
+            int freq = map.get(key);
+            if(bucket[freq]==null) bucket[freq] = new ArrayList<>();
             bucket[freq].add(key);
         }
-
-        List<Integer> result = new ArrayList<>();
-
-        for (int i = bucket.length - 1; i >= 0 && result.size() < k; i--) {
-            if (bucket[i] != null) {
-                result.addAll(bucket[i]);
+        
+        int[] ans = new int[k];
+        int j=0;
+        
+        for(int i=bucket.length-1; i>=0 && j<k; i--)
+        {
+            if(bucket[i]!=null)
+            {
+                for(int next : bucket[i])
+                {
+                    if(j >= k) break;
+                    ans[j++] = next;
+                }
             }
         }
-
-        return result.subList(0, k);
+        
+        return ans;
     }
 }
 
