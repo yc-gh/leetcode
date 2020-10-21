@@ -1,0 +1,6 @@
+//https://leetcode.com/problems/combine-two-tables/
+
+SELECT FIRSTNAME,LASTNAME,CITY,STATE
+FROM PERSON
+    LEFT OUTER JOIN ADDRESS
+    ON PERSON.PERSONID = ADDRESS.PERSONID;
