@@ -33,26 +33,13 @@ class Solution {
 //Recursive Solution
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if(head==null || head.next==null)
-        {
-            return head;
-        }
-        ListNode newHead = reverseListUtil(head);
-        head.next = null;
-        return newHead;
+        return reverseListUtil(head, null);
     }
     
-    ListNode reverseListUtil(ListNode curr)
-    {
-        if(curr.next.next == null)
-        {
-            ListNode newhead = curr.next;
-            newhead.next = curr;
-            return newhead;
-        }
-        ListNode newhead = reverseListUtil(curr.next);
-        ListNode currnext = curr.next;
-        currnext.next = curr;
-        return newhead;
+    private ListNode reverseListUtil(ListNode head, ListNode newHead) {
+        if(head == null) return newHead;
+        ListNode next = head.next;
+        head.next = newHead;
+        return reverseListUtil(next, head);
     }
 }
