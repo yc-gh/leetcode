@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/convert-bst-to-greater-tree/
+
 class Solution {
     int greater = 0;
     public TreeNode bstToGst(TreeNode root) {
