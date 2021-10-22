@@ -5,42 +5,42 @@ class Solution {
         if(start == end) return true;
         if(edges.length == 0) return false;
         
-        int[] group = new int[n], size = new int[n];
+        int[] parent = new int[n], size = new int[n];
         
         for(int i=0; i<n; i++) {
-            group[i] = i;
+            parent[i] = i;
             size[i] = 1;
         }
         
         for(int[] edge : edges) {
-            union(group, size, edge[0], edge[1]);
+            union(parent, size, edge[0], edge[1]);
         }
         
-        return find(group, start, end);
+        return find(parent, start, end);
     }
     
-    private int root(int[] group, int i) {
-        while(group[i] != i) {
-            group[i] = group[group[i]];
-            i = group[i];
+    private int root(int[] parent, int i) {
+        while(parent[i] != i) {
+            parent[i] = parent[parent[i]];
+            i = parent[i];
         }
         
         return i;
     }
     
-    private boolean find(int[] group, int a, int b) {
-        return root(group, a) == root(group, b);
+    private boolean find(int[] parent, int a, int b) {
+        return root(parent, a) == root(parent, b);
     }
     
-    private void union(int[] group, int[] size, int a, int b) {
-        int rootA = root(group, a), rootB = root(group, b);
+    private void union(int[] parent, int[] size, int a, int b) {
+        int rootA = root(parent, a), rootB = root(parent, b);
         
         if(size[rootA] < size[rootB]) {
-            group[rootA] = group[rootB];
+            parent[rootA] = parent[rootB];
             size[rootB] += size[rootA];
         }
         else {
-            group[rootB] = group[rootA];
+            parent[rootB] = parent[rootA];
             size[rootA] += size[rootB];
         }
     }
