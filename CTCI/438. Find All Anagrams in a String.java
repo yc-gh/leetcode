@@ -22,7 +22,7 @@ class Solution {
         while(j<len1) {
             if(count[s.charAt(i++) - 'a']++ >= 0) charsToBeFound++;
             if(count[s.charAt(j++) - 'a']-- > 0) charsToBeFound--;
-            if(charsToBeFound == 0) res.add(j-len2);
+            if(charsToBeFound == 0) res.add(i);
         }
         
         return res;
