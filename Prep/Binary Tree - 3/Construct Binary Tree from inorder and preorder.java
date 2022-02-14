@@ -13,10 +13,10 @@ class Solution {
             map.put(inorder[i], i);
         }
         
-        return buildTreeUtil(preorder, inorder, map, 0, preorder.length-1);
+        return buildTreeUtil(preorder, map, 0, preorder.length-1);
     }
     
-    private TreeNode buildTreeUtil(int[] preorder, int[] inorder, Map<Integer, Integer> map, 
+    private TreeNode buildTreeUtil(int[] preorder, Map<Integer, Integer> map, 
                                   int start, int end) {
         
         if(preIndex >= preorder.length || start > end) return null;
@@ -27,8 +27,8 @@ class Solution {
         
         int index = map.get(curr.val);
         
-        curr.left = buildTreeUtil(preorder, inorder, map, start, index-1);
-        curr.right = buildTreeUtil(preorder, inorder, map, index+1, end);
+        curr.left = buildTreeUtil(preorder, map, start, index-1);
+        curr.right = buildTreeUtil(preorder, map, index+1, end);
         
         return curr;
     }
